@@ -5,13 +5,14 @@ class PassedOrFailed
         @failed = Hash.new
         hash.each do |key, value|
           if value.to_i >= toPass.to_i
-              @passed[key]=value
+              @passed[key]=value.to_i
           else
-              @failed[key]=value
+              @failed[key]=value.to_i
           end
         end
     end
-    def result
-        puts "#@passed, #@failed"
+
+    def perform
+        {passed: @passed , failed: @failed}
     end
 end
